@@ -1,0 +1,22 @@
+{
+    "sourceFile": "utils/config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1699842590081,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699842936989,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,5 @@\n-// Import the functions you need from the SDKs you need\n-// const { initializeApp } = require('firebase-admin/app');\n-// TODO: Add SDKs for Firebase products that you want to use\n-// https://firebase.google.com/docs/web/setup#available-libraries\n \n-/* // Your web app's Firebase configuration\n-\n-\n-// Initialize Firebase\n-const app = initializeApp(firebaseConfig);\n- */\n-\n var admin = require(\"firebase-admin\");\n \n var serviceAccount = require(\"../back-electiva-firebase-adminsdk-wjbei-6f37904c59.json\");\n \n"
+                }
+            ],
+            "date": 1699842590081,
+            "name": "Commit-0",
+            "content": "// Import the functions you need from the SDKs you need\n// const { initializeApp } = require('firebase-admin/app');\n// TODO: Add SDKs for Firebase products that you want to use\n// https://firebase.google.com/docs/web/setup#available-libraries\n\n/* // Your web app's Firebase configuration\n\n\n// Initialize Firebase\nconst app = initializeApp(firebaseConfig);\n */\n\nvar admin = require(\"firebase-admin\");\n\nvar serviceAccount = require(\"../back-electiva-firebase-adminsdk-wjbei-6f37904c59.json\");\n\nadmin.initializeApp({\n  credential: admin.credential.cert(serviceAccount)\n});\n\nconst db = admin.firestore();\nmodule.exports = { admin, db };"
+        }
+    ]
+}

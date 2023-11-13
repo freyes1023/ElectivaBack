@@ -1,0 +1,78 @@
+{
+    "sourceFile": "config.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 15,
+            "patches": [
+                {
+                    "date": 1699777047124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699777149629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+var firebase = require(\"firebase/app\");\n+require(\"firebase/firestore\");\n+// TODO: Add SDKs for Firebase products that you want to use\n+// https://firebase.google.com/docs/web/setup#available-libraries\n+\n+// Your web app's Firebase configuration\n+const firebaseConfig = {\n+  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n+  authDomain: \"back-electiva.firebaseapp.com\",\n+  projectId: \"back-electiva\",\n+  storageBucket: \"back-electiva.appspot.com\",\n+  messagingSenderId: \"130110545922\",\n+  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n+};\n+\n+// Initialize Firebase\n+const app = firebase.initializeApp(firebaseConfig);\n+const db = app.database();\n+module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777166804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,20 @@\n+var firebase = require(\"firebase/app\");\n+require(\"firebase/firestore\");\n+// TODO: Add SDKs for Firebase products that you want to use\n+// https://firebase.google.com/docs/web/setup#available-libraries\n+\n+// Your web app's Firebase configuration\n+const firebaseConfig = {\n+  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n+  authDomain: \"back-electiva.firebaseapp.com\",\n+  projectId: \"back-electiva\",\n+  storageBucket: \"back-electiva.appspot.com\",\n+  messagingSenderId: \"130110545922\",\n+  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n+};\n+\n+// Initialize Firebase\n+const app = firebase.initializeApp(firebaseConfig);\n+console.log(app)\n+const db = app.database();\n+module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777183401,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,45 +14,7 @@\n };\n \n // Initialize Firebase\n const app = firebase.initializeApp(firebaseConfig);\n-console.log(app)\n+console.log(app.app)\n const db = app.database();\n-module.exports = db;\n-var firebase = require(\"firebase/app\");\n-require(\"firebase/firestore\");\n-// TODO: Add SDKs for Firebase products that you want to use\n-// https://firebase.google.com/docs/web/setup#available-libraries\n-\n-// Your web app's Firebase configuration\n-const firebaseConfig = {\n-  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n-  authDomain: \"back-electiva.firebaseapp.com\",\n-  projectId: \"back-electiva\",\n-  storageBucket: \"back-electiva.appspot.com\",\n-  messagingSenderId: \"130110545922\",\n-  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n-};\n-\n-// Initialize Firebase\n-const app = firebase.initializeApp(firebaseConfig);\n-const db = app.database();\n-module.exports = db;\n-var firebase = require(\"firebase/app\");\n-require(\"firebase/firestore\");\n-// TODO: Add SDKs for Firebase products that you want to use\n-// https://firebase.google.com/docs/web/setup#available-libraries\n-\n-// Your web app's Firebase configuration\n-const firebaseConfig = {\n-  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n-  authDomain: \"back-electiva.firebaseapp.com\",\n-  projectId: \"back-electiva\",\n-  storageBucket: \"back-electiva.appspot.com\",\n-  messagingSenderId: \"130110545922\",\n-  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n-};\n-\n-// Initialize Firebase\n-const app = firebase.initializeApp(firebaseConfig);\n-const db = app.firestore();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777196379,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n };\n \n // Initialize Firebase\n const app = firebase.initializeApp(firebaseConfig);\n-console.log(app.app)\n+console.log(app.app())\n const db = app.database();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777208348,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n };\n \n // Initialize Firebase\n const app = firebase.initializeApp(firebaseConfig);\n-console.log(app.app())\n+console.log(app)\n const db = app.database();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777232347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n };\n \n // Initialize Firebase\n const app = firebase.initializeApp(firebaseConfig);\n-console.log(app)\n+console.log(app.firestore());\n const db = app.database();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777246556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,7 @@\n };\n \n // Initialize Firebase\n const app = firebase.initializeApp(firebaseConfig);\n-console.log(app.firestore());\n+console.log(app.firestore);\n const db = app.database();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777469837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-var firebase = require(\"firebase/app\");\n-require(\"firebase/firestore\");\n+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');\n+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');\n // TODO: Add SDKs for Firebase products that you want to use\n // https://firebase.google.com/docs/web/setup#available-libraries\n \n // Your web app's Firebase configuration\n@@ -13,8 +13,8 @@\n   appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n };\n \n // Initialize Firebase\n-const app = firebase.initializeApp(firebaseConfig);\n+const app = initializeApp(firebaseConfig);\n console.log(app.firestore);\n const db = app.database();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777492782,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,6 +15,6 @@\n \n // Initialize Firebase\n const app = initializeApp(firebaseConfig);\n console.log(app.firestore);\n-const db = app.database();\n+const db = getFirestore()\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777557250,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,6 @@\n };\n \n // Initialize Firebase\n const app = initializeApp(firebaseConfig);\n-console.log(app.firestore);\n-const db = getFirestore()\n+const db = app getFirestore();\n module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777566100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,19 @@\n+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');\n+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');\n+// TODO: Add SDKs for Firebase products that you want to use\n+// https://firebase.google.com/docs/web/setup#available-libraries\n+\n+// Your web app's Firebase configuration\n+const firebaseConfig = {\n+  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n+  authDomain: \"back-electiva.firebaseapp.com\",\n+  projectId: \"back-electiva\",\n+  storageBucket: \"back-electiva.appspot.com\",\n+  messagingSenderId: \"130110545922\",\n+  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n+};\n+\n+// Initialize Firebase\n+const app = initializeApp(firebaseConfig);\n+const db = getFirestore();\n+module.exports = db;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699778170739,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');\n-const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');\n+// Import the functions you need from the SDKs you need\n+import { initializeApp } from \"firebase/app\";\n // TODO: Add SDKs for Firebase products that you want to use\n // https://firebase.google.com/docs/web/setup#available-libraries\n \n // Your web app's Firebase configuration\n@@ -13,26 +13,5 @@\n   appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n };\n \n // Initialize Firebase\n-const app = initializeApp(firebaseConfig);\n-const db = getFirestore();\n-module.exports = db;\n-const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');\n-const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');\n-// TODO: Add SDKs for Firebase products that you want to use\n-// https://firebase.google.com/docs/web/setup#available-libraries\n-\n-// Your web app's Firebase configuration\n-const firebaseConfig = {\n-  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n-  authDomain: \"back-electiva.firebaseapp.com\",\n-  projectId: \"back-electiva\",\n-  storageBucket: \"back-electiva.appspot.com\",\n-  messagingSenderId: \"130110545922\",\n-  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n-};\n-\n-// Initialize Firebase\n-const app = initializeApp(firebaseConfig);\n-const db = app getFirestore();\n-module.exports = db;\n\\ No newline at end of file\n+const app = initializeApp(firebaseConfig);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699839319053,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n // Import the functions you need from the SDKs you need\n-import { initializeApp } from \"firebase/app\";\n+var firebase = require(\"firebase\");\n // TODO: Add SDKs for Firebase products that you want to use\n // https://firebase.google.com/docs/web/setup#available-libraries\n \n // Your web app's Firebase configuration\n@@ -12,6 +12,18 @@\n   messagingSenderId: \"130110545922\",\n   appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n };\n \n-// Initialize Firebase\n-const app = initializeApp(firebaseConfig);\n\\ No newline at end of file\n+// Initialize Firebase with a \"default\" Firebase project\n+const defaultProject = firebase.initializeApp(firebaseConfig);\n+\n+console.log(defaultProject.name);  // \"[DEFAULT]\"\n+\n+// Option 1: Access Firebase services via the defaultProject variable\n+let defaultStorage = defaultProject.storage();\n+let defaultFirestore = defaultProject.firestore();\n+\n+// Option 2: Access Firebase services using shorthand notation\n+defaultStorage = firebase.storage();\n+defaultFirestore = firebase.firestore();\n+\n+export default defaultFirestore;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699839332306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,5 +25,5 @@\n // Option 2: Access Firebase services using shorthand notation\n defaultStorage = firebase.storage();\n defaultFirestore = firebase.firestore();\n \n-export default defaultFirestore;\n\\ No newline at end of file\n+module.exports = defaultFirestore;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699841550124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n // Import the functions you need from the SDKs you need\n-var firebase = require(\"firebase\");\n+// const { initializeApp } = require('firebase-admin/app');\n // TODO: Add SDKs for Firebase products that you want to use\n // https://firebase.google.com/docs/web/setup#available-libraries\n \n-// Your web app's Firebase configuration\n+/* // Your web app's Firebase configuration\n const firebaseConfig = {\n   apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n   authDomain: \"back-electiva.firebaseapp.com\",\n   projectId: \"back-electiva\",\n@@ -12,18 +12,15 @@\n   messagingSenderId: \"130110545922\",\n   appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n };\n \n-// Initialize Firebase with a \"default\" Firebase project\n-const defaultProject = firebase.initializeApp(firebaseConfig);\n+// Initialize Firebase\n+const app = initializeApp(firebaseConfig);\n+ */\n \n-console.log(defaultProject.name);  // \"[DEFAULT]\"\n+var admin = require(\"firebase-admin\");\n \n-// Option 1: Access Firebase services via the defaultProject variable\n-let defaultStorage = defaultProject.storage();\n-let defaultFirestore = defaultProject.firestore();\n+var serviceAccount = require(\"./back-electiva-firebase-adminsdk-wjbei-6f37904c59.json\");\n \n\\ No newline at end of file\n-// Option 2: Access Firebase services using shorthand notation\n-defaultStorage = firebase.storage();\n-defaultFirestore = firebase.firestore();\n-\n-module.exports = defaultFirestore;\n+admin.initializeApp({\n+  credential: admin.credential.cert(serviceAccount)\n+});\n"
+                }
+            ],
+            "date": 1699777047124,
+            "name": "Commit-0",
+            "content": "var firebase = require(\"firebase/app\");\nrequire(\"firebase/firestore\");\n// TODO: Add SDKs for Firebase products that you want to use\n// https://firebase.google.com/docs/web/setup#available-libraries\n\n// Your web app's Firebase configuration\nconst firebaseConfig = {\n  apiKey: \"AIzaSyBej-iUkktX9p05DvgN7HTBPAIBmoWa6pE\",\n  authDomain: \"back-electiva.firebaseapp.com\",\n  projectId: \"back-electiva\",\n  storageBucket: \"back-electiva.appspot.com\",\n  messagingSenderId: \"130110545922\",\n  appId: \"1:130110545922:web:a9d7e97d611a9e9031c71b\"\n};\n\n// Initialize Firebase\nconst app = firebase.initializeApp(firebaseConfig);\nconst db = app.firestore();\nmodule.exports = db;"
+        }
+    ]
+}
