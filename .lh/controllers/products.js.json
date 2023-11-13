@@ -1,0 +1,182 @@
+{
+    "sourceFile": "controllers/products.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 41,
+            "patches": [
+                {
+                    "date": 1699775899602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699776645759,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,32 +1,42 @@\n-const express = require(\"express\");\n-const router = express.Router();\n+const product = require(\"../models/product\");\n+const asyncHandler = require(\"express-async-handler\");\n \n-// Require controller modules.\n-const product_controller = require(\"../controllers/products\");\n+// Display list of all products.\n+exports.product_list = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product list\");\n+});\n \n+// Display detail page for a specific product.\n+exports.product_detail = asyncHandler(async (req, res, next) => {\n+  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+});\n \n-//GET request for creating product. NOTE This must come before route for id (i.e. display product).\n-router.get(\"/product/create\", product_controller.product_create_get);\n+// Display product create form on GET.\n+exports.product_create_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product create GET\");\n+});\n \n-// POST request for creating product.\n-router.get(\"/\", product_controller.product_create_post);\n+// Handle product create on POST.\n+exports.product_create_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product create POST\");\n+});\n \n-// GET request to delete product.\n\\ No newline at end of file\n-router.get(\"/product/:id/delete\", product_controller.product_delete_get);\n+// Display product delete form on GET.\n+exports.product_delete_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product delete GET\");\n+});\n \n-// POST request to delete product.\n-router.post(\"/product/:id/delete\", product_controller.product_delete_post);\n+// Handle product delete on POST.\n+exports.product_delete_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product delete POST\");\n+});\n \n-// GET request to update product.\n-router.get(\"/product/:id/update\", product_controller.product_update_get);\n+// Display product update form on GET.\n+exports.product_update_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product update GET\");\n+});\n \n-// POST request to update product.\n-router.post(\"/product/:id/update\", product_controller.product_update_post);\n-\n-// GET request for one product.\n-router.get(\"/product/:id\", product_controller.product_detail);\n-\n-// GET request for list of all products.\n-router.get(\"/products\", product_controller.product_list);\n-\n-module.exports = router;\n+// Handle product update on POST.\n+exports.product_update_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product update POST\");\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699776660349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-const product = require(\"../models/product\");\n+//const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699777137776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,14 @@\n //const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n+const db = require('../config')\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product list\");\n+  const products = await Product.find();\n+  res.json(products);\n+\n+  //res.send(\"NOT IMPLEMENTED: product list\");\n });\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699777640718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,49 @@\n+//const product = require(\"../models/product\");\n+const asyncHandler = require(\"express-async-handler\");\n+const db = require('../config')\n+\n+// Display list of all products.\n+exports.product_list = asyncHandler(async (req, res, next) => {\n+  const snapshot = await db.collection('users').get();\n+  snapshot.forEach((doc) => {\n+    console.log(doc.id, '=>', doc.data());\n+  });\n+  const products = snapshot.docs.map(doc => doc.data());\n+  res.json(products);\n+  //res.send(\"NOT IMPLEMENTED: product list\");\n+});\n+\n+// Display detail page for a specific product.\n+exports.product_detail = asyncHandler(async (req, res, next) => {\n+  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+});\n+\n+// Display product create form on GET.\n+exports.product_create_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product create GET\");\n+});\n+\n+// Handle product create on POST.\n+exports.product_create_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product create POST\");\n+});\n+\n+// Display product delete form on GET.\n+exports.product_delete_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product delete GET\");\n+});\n+\n+// Handle product delete on POST.\n+exports.product_delete_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product delete POST\");\n+});\n+\n+// Display product update form on GET.\n+exports.product_update_get = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product update GET\");\n+});\n+\n+// Handle product update on POST.\n+exports.product_update_post = asyncHandler(async (req, res, next) => {\n+  res.send(\"NOT IMPLEMENTED: product update POST\");\n+});\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699777732768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,60 +3,18 @@\n const db = require('../config')\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const snapshot = await db.collection('users').get();\n-  snapshot.forEach((doc) => {\n-    console.log(doc.id, '=>', doc.data());\n-  });\n-  const products = snapshot.docs.map(doc => doc.data());\n-  res.json(products);\n-  //res.send(\"NOT IMPLEMENTED: product list\");\n-});\n+  const aTuringRef = db.collection('users').doc('aturing');\n \n-// Display detail page for a specific product.\n-exports.product_detail = asyncHandler(async (req, res, next) => {\n-  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+await aTuringRef.set({\n+  'first': 'Alan',\n+  'middle': 'Mathison',\n+  'last': 'Turing',\n+  'born': 1912\n });\n \n-// Display product create form on GET.\n-exports.product_create_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product create GET\");\n-});\n-\n-// Handle product create on POST.\n-exports.product_create_post = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product create POST\");\n-});\n-\n-// Display product delete form on GET.\n-exports.product_delete_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product delete GET\");\n-});\n-\n-// Handle product delete on POST.\n-exports.product_delete_post = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product delete POST\");\n-});\n-\n-// Display product update form on GET.\n-exports.product_update_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product update GET\");\n-});\n-\n-// Handle product update on POST.\n-exports.product_update_post = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product update POST\");\n-});\n-//const product = require(\"../models/product\");\n-const asyncHandler = require(\"express-async-handler\");\n-const db = require('../config')\n-\n-// Display list of all products.\n-exports.product_list = asyncHandler(async (req, res, next) => {\n-  const products = await Product.find();\n-  res.json(products);\n-\n+  res.json(add);\n   //res.send(\"NOT IMPLEMENTED: product list\");\n });\n \n // Display detail page for a specific product.\n"
+                },
+                {
+                    "date": 1699843199133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n //const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n-const db = require('../config')\n+const db = require('../utils/config')\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n   const aTuringRef = db.collection('users').doc('aturing');\n"
+                },
+                {
+                    "date": 1699843996190,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n const db = require('../utils/config')\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const aTuringRef = db.collection('users').doc('aturing');\n+  const booksRef = db.collection('Books');\n \n-await aTuringRef.set({\n+await booksRef.set({\n   'first': 'Alan',\n   'middle': 'Mathison',\n   'last': 'Turing',\n   'born': 1912\n"
+                },
+                {
+                    "date": 1699844395968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n //const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n-const db = require('../utils/config')\n+const config = require('../utils/config')\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const booksRef = db.collection('Books');\n+  const booksRef = config.db.collection('Books');\n \n await booksRef.set({\n   'first': 'Alan',\n   'middle': 'Mathison',\n"
+                },
+                {
+                    "date": 1699844414602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n   const booksRef = config.db.collection('Books');\n \n-await booksRef.set({\n+await booksRef.add({\n   'first': 'Alan',\n   'middle': 'Mathison',\n   'last': 'Turing',\n   'born': 1912\n"
+                },
+                {
+                    "date": 1699844447305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,16 +5,16 @@\n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n   const booksRef = config.db.collection('Books');\n \n-await booksRef.add({\n+const a = await booksRef.add({\n   'first': 'Alan',\n   'middle': 'Mathison',\n   'last': 'Turing',\n   'born': 1912\n });\n \n-  res.json(add);\n+  res.json(a);\n   //res.send(\"NOT IMPLEMENTED: product list\");\n });\n \n // Display detail page for a specific product.\n"
+                },
+                {
+                    "date": 1699844588672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,14 +5,9 @@\n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n   const booksRef = config.db.collection('Books');\n \n-const a = await booksRef.add({\n-  'first': 'Alan',\n-  'middle': 'Mathison',\n-  'last': 'Turing',\n-  'born': 1912\n-});\n+const a = await booksRef.add(req.body);\n \n   res.json(a);\n   //res.send(\"NOT IMPLEMENTED: product list\");\n });\n"
+                },
+                {
+                    "date": 1699845072320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n //const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n const config = require('../utils/config')\n \n+const collectionName = \"Products\"\n+\n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const booksRef = config.db.collection('Books');\n+  const booksRef = config.db.collection(collection);\n \n const a = await booksRef.add(req.body);\n \n   res.json(a);\n"
+                },
+                {
+                    "date": 1699845078231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n const collectionName = \"Products\"\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const booksRef = config.db.collection(collection);\n+  const booksRef = config.db.collection(collectionName);\n \n const a = await booksRef.add(req.body);\n \n   res.json(a);\n"
+                },
+                {
+                    "date": 1699845188909,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,9 @@\n   const booksRef = config.db.collection(collectionName);\n \n const a = await booksRef.add(req.body);\n \n-  res.json(a);\n-  //res.send(\"NOT IMPLEMENTED: product list\");\n+  res.json({msj:'created'});\n });\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699845664033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,18 +5,23 @@\n const collectionName = \"Products\"\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n-  const booksRef = config.db.collection(collectionName);\n-\n-const a = await booksRef.add(req.body);\n-\n-  res.json({msj:'created'});\n+  const ref = config.db.collection(collectionName);\n+  await ref.get().then((snapshot) => {\n+    const data = snapshot.docs.map((doc) => ({\n+      id: doc.id,\n+      ...doc.data(),\n+    }));\n+    console.log(data);\n+    return res.status(201).send(data);\n+  })\n });\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n-  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+\n+  //res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n // Display product create form on GET.\n exports.product_create_get = asyncHandler(async (req, res, next) => {\n@@ -24,8 +29,11 @@\n });\n \n // Handle product create on POST.\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n+  const ref = config.db.collection(collectionName);\n+  await ref.add(req.body);\n+  res.status(201).json({ msj: 'created' });\n   res.send(\"NOT IMPLEMENTED: product create POST\");\n });\n \n // Display product delete form on GET.\n"
+                },
+                {
+                    "date": 1699845730449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,8 @@\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n     }));\n-    console.log(data);\n     return res.status(201).send(data);\n   })\n });\n \n"
+                },
+                {
+                    "date": 1699845839847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName);\n   await ref.add(req.body);\n   res.status(201).json({ msj: 'created' });\n-  res.send(\"NOT IMPLEMENTED: product create POST\");\n+ // res.send(\"NOT IMPLEMENTED: product create POST\");\n });\n \n // Display product delete form on GET.\n exports.product_delete_get = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699846092639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n     }));\n-    return res.status(201).send(data);\n+    return res.status(200).send(data);\n   })\n });\n \n // Display detail page for a specific product.\n"
+                },
+                {
+                    "date": 1699847049865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,13 +21,10 @@\n \n   //res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n-// Display product create form on GET.\n-exports.product_create_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product create GET\");\n-});\n \n+\n // Handle product create on POST.\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName);\n   await ref.add(req.body);\n"
+                },
+                {
+                    "date": 1699847121986,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n const collectionName = \"Products\"\n \n // Display list of all products.\n exports.product_list = asyncHandler(async (req, res, next) => {\n+  console.log('product_list');\n   const ref = config.db.collection(collectionName);\n   await ref.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n"
+                },
+                {
+                    "date": 1699847161284,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n \n-  //res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n \n \n"
+                },
+                {
+                    "date": 1699847607835,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,8 +19,19 @@\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n \n+  const ref = config.db.collection(collectionName);\n+  // Create a query against the collection.\n+  console.log('product_detail id ', req);\n+  var query = ref.where(doc.id, \"\"==\"\", req.params.id);\n+  await ref.get().then((snapshot) => {\n+    const data = snapshot.docs.map((doc) => ({\n+      id: doc.id,\n+      ...doc.data(),\n+    }));\n+    return res.status(200).send(data);\n+  })\n   res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n \n"
+                },
+                {
+                    "date": 1699847668489,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req);\n   var query = ref.where(doc.id, \"\"==\"\", req.params.id);\n-  await ref.get().then((snapshot) => {\n+  await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n     }));\n"
+                },
+                {
+                    "date": 1699847706349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req);\n-  var query = ref.where(doc.id, \"\"==\"\", req.params.id);\n+  var query = ref.where(\"id\", \"\"==\"\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699847751934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req);\n-  var query = ref.where(\"id\", \"\"==\"\", req.params.id);\n+  var query = ref.where(\"id\", \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699847767794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n       ...doc.data(),\n     }));\n     return res.status(200).send(data);\n   })\n-  res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n+ // res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n \n \n"
+                },
+                {
+                    "date": 1699847841010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n exports.product_detail = asyncHandler(async (req, res, next) => {\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n-  console.log('product_detail id ', req);\n+  console.log('product_detail id ', req.params);\n   var query = ref.where(\"id\", \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n"
+                },
+                {
+                    "date": 1699847937927,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req.params);\n-  var query = ref.where(\"id\", \"==\", req.params.id);\n+  var query = ref.where(ref.doc.id, \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699848161473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req.params);\n-  var query = ref.where(ref.doc.id, \"==\", req.params.id);\n+  var query = ref.where(db.FieldPath.documentId(), \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699848198776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req.params);\n-  var query = ref.where(db.FieldPath.documentId(), \"==\", req.params.id);\n+  var query = ref.where(config.db.FieldPath.documentId(), \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699848228588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \n   const ref = config.db.collection(collectionName);\n   // Create a query against the collection.\n   console.log('product_detail id ', req.params);\n-  var query = ref.where(config.db.FieldPath.documentId(), \"==\", req.params.id);\n+  var query = ref.where(ref.FieldPath.documentId(), \"==\", req.params.id);\n   await query.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n"
+                },
+                {
+                    "date": 1699848305255,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,13 +19,11 @@\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n \n-  const ref = config.db.collection(collectionName);\n+  const ref = config.db.collection(collectionName).doc(req.params.id)\n   // Create a query against the collection.\n-  console.log('product_detail id ', req.params);\n-  var query = ref.where(ref.FieldPath.documentId(), \"==\", req.params.id);\n-  await query.get().then((snapshot) => {\n+  await ref.get().then((snapshot) => {\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n     }));\n"
+                },
+                {
+                    "date": 1699848371049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,9 @@\n \n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   // Create a query against the collection.\n   await ref.get().then((snapshot) => {\n+    console.log(snapshot.data());\n     const data = snapshot.docs.map((doc) => ({\n       id: doc.id,\n       ...doc.data(),\n     }));\n"
+                },
+                {
+                    "date": 1699848396568,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,14 +22,9 @@\n \n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   // Create a query against the collection.\n   await ref.get().then((snapshot) => {\n-    console.log(snapshot.data());\n-    const data = snapshot.docs.map((doc) => ({\n-      id: doc.id,\n-      ...doc.data(),\n-    }));\n-    return res.status(200).send(data);\n+    return res.status(200).send(snapshot.data());\n   })\n  // res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n"
+                },
+                {
+                    "date": 1699848636807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,16 +39,15 @@\n });\n \n // Display product delete form on GET.\n exports.product_delete_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product delete GET\");\n+  const ref = config.db.collection(collectionName).doc(req.params.id)\n+  await ref.delete();\n+  res.send(\"deleted\");\n });\n \n-// Handle product delete on POST.\n-exports.product_delete_post = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product delete POST\");\n-});\n \n+\n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   res.send(\"NOT IMPLEMENTED: product update GET\");\n });\n"
+                },
+                {
+                    "date": 1699849362768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,8 @@\n  // res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n \n-\n // Handle product create on POST.\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName);\n   await ref.add(req.body);\n@@ -48,9 +47,12 @@\n \n \n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product update GET\");\n+  const ref = config.db.collection(collectionName).doc(req.params.id)\n+  ref.update(req.body);\n+  //\n+  res.status(201).json({ msj: 'updated' });\n });\n \n // Handle product update on POST.\n exports.product_update_post = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699849368636,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   ref.update(req.body);\n   //\n-  res.status(201).json({ msj: 'updated' });\n+  res.status(202).json({ msj: 'updated' });\n });\n \n // Handle product update on POST.\n exports.product_update_post = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699849564768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,12 +49,13 @@\n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   ref.update(req.body);\n-  //\n   res.status(202).json({ msj: 'updated' });\n });\n \n // Handle product update on POST.\n exports.product_update_post = asyncHandler(async (req, res, next) => {\n-  res.send(\"NOT IMPLEMENTED: product update POST\");\n+  const ref = config.db.collection(collectionName).doc(req.params.id)\n+  ref.update(req.body);\n+  res.status(202).json({ msj: 'updated' });\n });\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699849845588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,10 +43,8 @@\n   await ref.delete();\n   res.send(\"deleted\");\n });\n \n-\n-\n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   ref.update(req.body);\n"
+                },
+                {
+                    "date": 1699849871343,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,4 @@\n-//const product = require(\"../models/product\");\n const asyncHandler = require(\"express-async-handler\");\n const config = require('../utils/config')\n \n const collectionName = \"Products\"\n@@ -24,18 +23,16 @@\n   // Create a query against the collection.\n   await ref.get().then((snapshot) => {\n     return res.status(200).send(snapshot.data());\n   })\n- // res.send(`NOT IMPLEMENTED: product detail: ${req.params.id}`);\n });\n \n \n // Handle product create on POST.\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName);\n   await ref.add(req.body);\n   res.status(201).json({ msj: 'created' });\n- // res.send(\"NOT IMPLEMENTED: product create POST\");\n });\n \n // Display product delete form on GET.\n exports.product_delete_get = asyncHandler(async (req, res, next) => {\n"
+                },
+                {
+                    "date": 1699849973629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,8 @@\n });\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n-\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   // Create a query against the collection.\n   await ref.get().then((snapshot) => {\n     return res.status(200).send(snapshot.data());\n"
+                }
+            ],
+            "date": 1699775899602,
+            "name": "Commit-0",
+            "content": "const express = require(\"express\");\nconst router = express.Router();\n\n// Require controller modules.\nconst product_controller = require(\"../controllers/products\");\n\n\n//GET request for creating product. NOTE This must come before route for id (i.e. display product).\nrouter.get(\"/product/create\", product_controller.product_create_get);\n\n// POST request for creating product.\nrouter.get(\"/\", product_controller.product_create_post);\n\n// GET request to delete product.\nrouter.get(\"/product/:id/delete\", product_controller.product_delete_get);\n\n// POST request to delete product.\nrouter.post(\"/product/:id/delete\", product_controller.product_delete_post);\n\n// GET request to update product.\nrouter.get(\"/product/:id/update\", product_controller.product_update_get);\n\n// POST request to update product.\nrouter.post(\"/product/:id/update\", product_controller.product_update_post);\n\n// GET request for one product.\nrouter.get(\"/product/:id\", product_controller.product_detail);\n\n// GET request for list of all products.\nrouter.get(\"/products\", product_controller.product_list);\n\nmodule.exports = router;"
+        }
+    ]
+}

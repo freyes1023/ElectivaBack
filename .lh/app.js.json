@@ -1,0 +1,34 @@
+{
+    "sourceFile": "app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1699776032836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699776095366,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n const port = 3000;\n \n \n //var indexRouter = require(\"./routes/index\");\n-import * as productsRouter from './routes/products.js';\n+const  productsRouter = require ('./routes/products')\n \n \n \n //app.use(\"/\", indexRouter);\n"
+                },
+                {
+                    "date": 1699850201184,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,31 +1,23 @@\n var express = require('express');\n var cors = require('cors');\n-\n-//var path = require('path');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n \n-\n-var indexRouter = require('./routes/index');\n-var usersRouter = require('./routes/users');\n-\n var app = express();\n \n app.use(logger('dev'));\n app.use(express.json());\n app.use(express.urlencoded({ extended: false }));\n app.use(cookieParser());\n app.use(cors());\n-// app.use(express.static(path.join(__dirname, 'public')));\n-\n app.use('/', indexRouter);\n app.use('/users', usersRouter);\n \n const port = 3000;\n \n-\n-//var indexRouter = require(\"./routes/index\");\n+var indexRouter = require('./routes/index');\n+var usersRouter = require('./routes/users');\n const  productsRouter = require ('./routes/products')\n \n \n \n"
+                },
+                {
+                    "date": 1699850229611,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,15 @@\n var express = require('express');\n var cors = require('cors');\n+\n+//var path = require('path');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n \n+\n+var indexRouter = require('./routes/index');\n+var usersRouter = require('./routes/users');\n+\n var app = express();\n \n app.use(logger('dev'));\n app.use(express.json());\n@@ -14,10 +20,10 @@\n app.use('/users', usersRouter);\n \n const port = 3000;\n \n-var indexRouter = require('./routes/index');\n-var usersRouter = require('./routes/users');\n+\n+//var indexRouter = require(\"./routes/index\");\n const  productsRouter = require ('./routes/products')\n \n \n \n"
+                },
+                {
+                    "date": 1699850314938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,33 +1,27 @@\n var express = require('express');\n var cors = require('cors');\n-\n-//var path = require('path');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n+const port = 3000;\n \n-\n-var indexRouter = require('./routes/index');\n-var usersRouter = require('./routes/users');\n-\n var app = express();\n \n app.use(logger('dev'));\n app.use(express.json());\n app.use(express.urlencoded({ extended: false }));\n app.use(cookieParser());\n app.use(cors());\n-app.use('/', indexRouter);\n-app.use('/users', usersRouter);\n \n-const port = 3000;\n \n+const indexRouter = require('./routes/index');\n+const usersRouter = require('./routes/users');\n+const productsRouter = require ('./routes/products')\n \n-//var indexRouter = require(\"./routes/index\");\n-const  productsRouter = require ('./routes/products')\n+app.use('/', indexRouter);\n+app.use('/users', usersRouter);\n \n \n-\n //app.use(\"/\", indexRouter);\n app.use(\"/products\", productsRouter);\n \n app.listen(port, () => {\n"
+                }
+            ],
+            "date": 1699776032836,
+            "name": "Commit-0",
+            "content": "var express = require('express');\nvar cors = require('cors');\n\n//var path = require('path');\nvar cookieParser = require('cookie-parser');\nvar logger = require('morgan');\n\n\nvar indexRouter = require('./routes/index');\nvar usersRouter = require('./routes/users');\n\nvar app = express();\n\napp.use(logger('dev'));\napp.use(express.json());\napp.use(express.urlencoded({ extended: false }));\napp.use(cookieParser());\napp.use(cors());\n// app.use(express.static(path.join(__dirname, 'public')));\n\napp.use('/', indexRouter);\napp.use('/users', usersRouter);\n\nconst port = 3000;\n\n\n//var indexRouter = require(\"./routes/index\");\nimport * as productsRouter from './routes/products.js';\n\n\n\n//app.use(\"/\", indexRouter);\napp.use(\"/products\", productsRouter);\n\napp.listen(port, () => {\n    console.log(`Server is running on port ${port}`);\n})\n\nmodule.exports = app;\n"
+        }
+    ]
+}
