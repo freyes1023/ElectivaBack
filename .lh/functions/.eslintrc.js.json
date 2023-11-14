@@ -1,0 +1,26 @@
+{
+    "sourceFile": "functions/.eslintrc.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1699911745831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699911793648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,8 @@\n     es6: true,\n     node: true,\n   },\n   parserOptions: {\n-    \"ecmaVersion\": 2018,\n     \"sourceType\": \"module\",\n   },\n   extends: [\n     \"eslint:recommended\",\n"
+                },
+                {
+                    "date": 1699911817301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n     es6: true,\n     node: true,\n   },\n   parserOptions: {\n+    \"ecmaVersion\": 2018,\n     \"sourceType\": \"module\",\n   },\n   extends: [\n     \"eslint:recommended\",\n"
+                }
+            ],
+            "date": 1699911745831,
+            "name": "Commit-0",
+            "content": "module.exports = {\n  env: {\n    es6: true,\n    node: true,\n  },\n  parserOptions: {\n    \"ecmaVersion\": 2018,\n    \"sourceType\": \"module\",\n  },\n  extends: [\n    \"eslint:recommended\",\n    \"google\",\n  ],\n  rules: {\n    \"no-restricted-globals\": [\"error\", \"name\", \"length\"],\n    \"prefer-arrow-callback\": \"error\",\n    \"quotes\": [\"error\", \"double\", {\"allowTemplateLiterals\": true}],\n  },\n  overrides: [\n    {\n      files: [\"**/*.spec.*\"],\n      env: {\n        mocha: true,\n      },\n      rules: {},\n    },\n  ],\n  globals: {},\n};\n"
+        }
+    ]
+}

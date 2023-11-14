@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 4,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1699776032836,
@@ -24,6 +24,26 @@
                 {
                     "date": 1699850314938,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,33 +1,27 @@\n var express = require('express');\n var cors = require('cors');\n-\n-//var path = require('path');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n+const port = 3000;\n \n-\n-var indexRouter = require('./routes/index');\n-var usersRouter = require('./routes/users');\n-\n var app = express();\n \n app.use(logger('dev'));\n app.use(express.json());\n app.use(express.urlencoded({ extended: false }));\n app.use(cookieParser());\n app.use(cors());\n-app.use('/', indexRouter);\n-app.use('/users', usersRouter);\n \n-const port = 3000;\n \n+const indexRouter = require('./routes/index');\n+const usersRouter = require('./routes/users');\n+const productsRouter = require ('./routes/products')\n \n-//var indexRouter = require(\"./routes/index\");\n-const  productsRouter = require ('./routes/products')\n+app.use('/', indexRouter);\n+app.use('/users', usersRouter);\n \n \n-\n //app.use(\"/\", indexRouter);\n app.use(\"/products\", productsRouter);\n \n app.listen(port, () => {\n"
+                },
+                {
+                    "date": 1699853502478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n+const Funtions = require('firebase-admin')\n const port = 3000;\n \n var app = express();\n \n"
+                },
+                {
+                    "date": 1699909529756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n \n //app.use(\"/\", indexRouter);\n app.use(\"/products\", productsRouter);\n \n-app.listen(port, () => {\n+/* app.listen(port, () => {\n     console.log(`Server is running on port ${port}`);\n-})\n+}) */\n \n module.exports = app;\n"
+                },
+                {
+                    "date": 1699909537640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n const Funtions = require('firebase-admin')\n-const port = 3000;\n+// const port = 3000;\n \n var app = express();\n \n app.use(logger('dev'));\n"
+                },
+                {
+                    "date": 1699910758280,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n-const Funtions = require('firebase-admin')\n+const functions = require('firebase-admin')\n // const port = 3000;\n \n var app = express();\n \n@@ -28,5 +28,6 @@\n /* app.listen(port, () => {\n     console.log(`Server is running on port ${port}`);\n }) */\n \n-module.exports = app;\n+// module.exports = app;\n+exports.app = functions.https.onRequest(app);\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1699910824139,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n-const functions = require('firebase-admin')\n+const functions = require(\"firebase-functions\");\n // const port = 3000;\n \n var app = express();\n \n"
                 }
             ],
             "date": 1699776032836,

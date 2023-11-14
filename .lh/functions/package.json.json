@@ -1,0 +1,26 @@
+{
+    "sourceFile": "functions/package.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1699910733126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699911345488,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n {\n   \"name\": \"functions\",\n   \"description\": \"Cloud Functions for Firebase\",\n+  \"type\": \"module\",\n   \"scripts\": {\n     \"lint\": \"eslint .\",\n     \"serve\": \"firebase emulators:start --only functions\",\n     \"shell\": \"firebase functions:shell\",\n"
+                },
+                {
+                    "date": 1699911871968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,7 @@\n {\n   \"name\": \"functions\",\n   \"description\": \"Cloud Functions for Firebase\",\n-  \"type\": \"module\",\n   \"scripts\": {\n     \"lint\": \"eslint .\",\n     \"serve\": \"firebase emulators:start --only functions\",\n     \"shell\": \"firebase functions:shell\",\n@@ -12,9 +11,9 @@\n   },\n   \"engines\": {\n     \"node\": \"16\"\n   },\n-  \"main\": \"../app.js\",\n+  \"main\": \"index.js\",\n   \"dependencies\": {\n     \"cookie-parser\": \"^1.4.6\",\n     \"cors\": \"^2.8.5\",\n     \"firebase-admin\": \"^11.5.0\",\n"
+                }
+            ],
+            "date": 1699910733126,
+            "name": "Commit-0",
+            "content": "{\n  \"name\": \"functions\",\n  \"description\": \"Cloud Functions for Firebase\",\n  \"scripts\": {\n    \"lint\": \"eslint .\",\n    \"serve\": \"firebase emulators:start --only functions\",\n    \"shell\": \"firebase functions:shell\",\n    \"start\": \"npm run shell\",\n    \"deploy\": \"firebase deploy --only functions\",\n    \"logs\": \"firebase functions:log\"\n  },\n  \"engines\": {\n    \"node\": \"16\"\n  },\n  \"main\": \"../app.js\",\n  \"dependencies\": {\n    \"cookie-parser\": \"^1.4.6\",\n    \"cors\": \"^2.8.5\",\n    \"firebase-admin\": \"^11.5.0\",\n    \"firebase-functions\": \"^4.2.0\",\n    \"morgan\": \"^1.10.0\"\n  },\n  \"devDependencies\": {\n    \"eslint\": \"^8.15.0\",\n    \"eslint-config-google\": \"^0.14.0\",\n    \"firebase-functions-test\": \"^3.0.0\"\n  },\n  \"private\": true\n}\n"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "sourceFile": "routes/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1699856085450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1699858417422,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,8 @@\n var router = express.Router();\n \n /* GET home page. */\n router.get('/', function(req, res, next) {\n-  res.render('index', { title: 'Express 2' });\n+  res.render('../public/index.html  ', { title: 'Express 2' });\n });\n \n module.exports = router;\n"
+                },
+                {
+                    "date": 1699858444891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,8 @@\n var router = express.Router();\n \n /* GET home page. */\n router.get('/', function(req, res, next) {\n-  res.render('../public/index.html  ', { title: 'Express 2' });\n+  res.render('index', { title: 'Express 2' });\n });\n \n module.exports = router;\n"
+                },
+                {
+                    "date": 1699858470610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,9 @@\n var router = express.Router();\n \n /* GET home page. */\n router.get('/', function(req, res, next) {\n-  res.render('index', { title: 'Express 2' });\n+ // res.render('index', { title: 'Express 2' });\n+ res.send('index');\n });\n \n module.exports = router;\n"
+                }
+            ],
+            "date": 1699856085450,
+            "name": "Commit-0",
+            "content": "var express = require('express');\nvar router = express.Router();\n\n/* GET home page. */\nrouter.get('/', function(req, res, next) {\n  res.render('index', { title: 'Express 2' });\n});\n\nmodule.exports = router;\n"
+        }
+    ]
+}
