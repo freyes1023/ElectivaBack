@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 41,
+            "activePatchIndex": 44,
             "patches": [
                 {
                     "date": 1699775899602,
@@ -172,6 +172,18 @@
                 {
                     "date": 1699849973629,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,8 @@\n });\n \n // Display detail page for a specific product.\n exports.product_detail = asyncHandler(async (req, res, next) => {\n-\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   // Create a query against the collection.\n   await ref.get().then((snapshot) => {\n     return res.status(200).send(snapshot.data());\n"
+                },
+                {
+                    "date": 1700117403431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,11 @@\n \n // Handle product create on POST.\n exports.product_create_post = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName);\n-  await ref.add(req.body);\n+  const product = {...req.body,  createdAt: new Date(),\n+    updatedAt:  new Date()};\n+  await ref.add(product);\n   res.status(201).json({ msj: 'created' });\n });\n \n // Display product delete form on GET.\n@@ -42,14 +44,8 @@\n \n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n-  ref.update(req.body);\n+  const product = {...req.body, updatedAt:  new Date()};\n+  ref.update(product);\n   res.status(202).json({ msj: 'updated' });\n });\n-\n-// Handle product update on POST.\n-exports.product_update_post = asyncHandler(async (req, res, next) => {\n-  const ref = config.db.collection(collectionName).doc(req.params.id)\n-  ref.update(req.body);\n\\ No newline at end of file\n-  res.status(202).json({ msj: 'updated' });\n-});\n"
+                },
+                {
+                    "date": 1700117481569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,14 +38,14 @@\n // Display product delete form on GET.\n exports.product_delete_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   await ref.delete();\n-  res.send(\"deleted\");\n+  res.status(200).send(\"deleted\");\n });\n \n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   const product = {...req.body, updatedAt:  new Date()};\n   ref.update(product);\n-  res.status(202).json({ msj: 'updated' });\n+  res.status(200).json({ msj: 'updated' });\n });\n"
+                },
+                {
+                    "date": 1700121063544,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,9 @@\n // Display product delete form on GET.\n exports.product_delete_get = asyncHandler(async (req, res, next) => {\n   const ref = config.db.collection(collectionName).doc(req.params.id)\n   await ref.delete();\n-  res.status(200).send(\"deleted\");\n+  res.status(200).json({ msj: 'deleted' })\n });\n \n // Display product update form on GET.\n exports.product_update_get = asyncHandler(async (req, res, next) => {\n"
                 }
             ],
             "date": 1699775899602,

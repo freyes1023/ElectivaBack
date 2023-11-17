@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 11,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1699775845937,
@@ -52,6 +52,10 @@
                 {
                     "date": 1699848969328,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,16 +12,16 @@\n \n // POST request for creating product.\n router.post(\"/\", product_controller.product_create_post);\n \n-// GET request to delete product.\n+// delete request to delete product.\n router.delete(\"/:id\", product_controller.product_delete_get);\n \n-// GET request to update product.\n+// patch request to update product.\n router.patch(\"/:id\", product_controller.product_update_get);\n \n-// POST request to update product.\n-router.put(\"/product/:id/update\", product_controller.product_update_post);\n+// put request to update product.\n+router.put(\"/:id\", product_controller.product_update_post);\n \n // GET request for one product.\n router.get(\"/:id\", product_controller.product_detail);\n \n"
+                },
+                {
+                    "date": 1700117435247,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n // patch request to update product.\n router.patch(\"/:id\", product_controller.product_update_get);\n \n // put request to update product.\n-router.put(\"/:id\", product_controller.product_update_post);\n+router.put(\"/:id\", product_controller.product_update_get);\n \n // GET request for one product.\n router.get(\"/:id\", product_controller.product_detail);\n \n"
                 }
             ],
             "date": 1699775845937,

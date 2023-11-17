@@ -20,7 +20,7 @@ router.delete("/:id", product_controller.product_delete_get);
 router.patch("/:id", product_controller.product_update_get);
 
 // put request to update product.
-router.put("/:id", product_controller.product_update_post);
+router.put("/:id", product_controller.product_update_get);
 
 // GET request for one product.
 router.get("/:id", product_controller.product_detail);

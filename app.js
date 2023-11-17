@@ -2,8 +2,7 @@ var express = require('express');
 var cors = require('cors');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const functions = require("firebase-functions");
-// const port = 3000;
+const port = parseInt(process.env.PORT) || 8080;
 
 var app = express();
 
@@ -25,9 +24,8 @@ app.use('/users', usersRouter);
 //app.use("/", indexRouter);
 app.use("/products", productsRouter);
 
-/* app.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-}) */
+}) 
 
-// module.exports = app;
-exports.app = functions.https.onRequest(app);
+ module.exports = app;

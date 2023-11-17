@@ -29,7 +29,9 @@ exports.product_detail = asyncHandler(async (req, res, next) => {
 // Handle product create on POST.
 exports.product_create_post = asyncHandler(async (req, res, next) => {
   const ref = config.db.collection(collectionName);
-  await ref.add(req.body);
+  const product = {...req.body,  createdAt: new Date(),
+    updatedAt:  new Date()};
+  await ref.add(product);
   res.status(201).json({ msj: 'created' });
 });
 
@@ -37,19 +39,13 @@ exports.product_create_post = asyncHandler(async (req, res, next) => {
 exports.product_delete_get = asyncHandler(async (req, res, next) => {
   const ref = config.db.collection(collectionName).doc(req.params.id)
   await ref.delete();
-  res.send("deleted");
+  res.status(200).json({ msj: 'deleted' })
 });
 
 // Display product update form on GET.
 exports.product_update_get = asyncHandler(async (req, res, next) => {
   const ref = config.db.collection(collectionName).doc(req.params.id)
-  ref.update(req.body);
-  res.status(202).json({ msj: 'updated' });
-});
-
-// Handle product update on POST.
-exports.product_update_post = asyncHandler(async (req, res, next) => {
-  const ref = config.db.collection(collectionName).doc(req.params.id)
-  ref.update(req.body);
-  res.status(202).json({ msj: 'updated' });
+  const product = {...req.body, updatedAt:  new Date()};
+  ref.update(product);
+  res.status(200).json({ msj: 'updated' });
 });

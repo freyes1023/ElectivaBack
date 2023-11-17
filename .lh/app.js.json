@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 9,
+            "activePatchIndex": 12,
             "patches": [
                 {
                     "date": 1699776032836,
@@ -44,6 +44,18 @@
                 {
                     "date": 1699910824139,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n-const functions = require('firebase-admin')\n+const functions = require(\"firebase-functions\");\n // const port = 3000;\n \n var app = express();\n \n"
+                },
+                {
+                    "date": 1700083872029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n-const functions = require(\"firebase-functions\");\n // const port = 3000;\n \n var app = express();\n \n@@ -24,10 +23,9 @@\n \n //app.use(\"/\", indexRouter);\n app.use(\"/products\", productsRouter);\n \n-/* app.listen(port, () => {\n+app.listen(port, () => {\n     console.log(`Server is running on port ${port}`);\n-}) */\n+}) \n \n\\ No newline at end of file\n-// module.exports = app;\n-exports.app = functions.https.onRequest(app);\n+ module.exports = app;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1700083878722,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n-// const port = 3000;\n+ const port = 3000;\n \n var app = express();\n \n app.use(logger('dev'));\n"
+                },
+                {
+                    "date": 1700086352185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n var express = require('express');\n var cors = require('cors');\n var cookieParser = require('cookie-parser');\n var logger = require('morgan');\n- const port = 3000;\n+const port = parseInt(process.env.PORT) || 8080;\n \n var app = express();\n \n app.use(logger('dev'));\n"
                 }
             ],
             "date": 1699776032836,
